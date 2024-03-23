@@ -1,0 +1,86 @@
+@startuml
+class ProdutoVenda{
+  -quantidade : Integer
+}
+
+class Tela{
+  -tamanho : Float
+  -resolucao : Float
+}
+
+class Camera{
+  -resolucao : Float
+  -direcao : Boolean
+}
+
+enum PortasESlots{
+  CARTOES_SIM
+  CARTAO_DE_MEMORIA
+}
+
+enum Funcionalidades{
+  SENSOR_PROXIMIDADE
+  INFRA_VERMELHO
+  SENSOR_LUZ
+  SENSOR_MOVIMENTO
+  LEITOR_DIGITAL
+}
+
+class Processador{
+  -marca : String 
+  -modelo : String
+}
+
+class Linha{
+  -marca : String
+  -anoLancamento : Date
+}
+
+class Celular{
+  -marca : String
+  -nome : String
+  -anoLancamento : date
+  -armazenamento : Float
+  -ram : Float
+  -preco : Float
+}
+
+class Serie{
+  -nome : String
+  -anoLancamento : date
+}
+
+class Venda{
+  -ValorFinal : Float
+}
+
+class Usuario{
+  -loguim : String
+  -Senha : String
+  -cpf : String
+  -nome : String
+  -sexo : Boolean
+}
+
+class Cliente{
+  -cep : String
+}
+
+class Funcionario{
+  -codigoFuncionario : String
+}
+
+Celular "*" *--> "1" Tela
+Celular --> Funcionalidades
+Celular --> "*" PortasESlots
+Celular "*" *--> "*" Camera
+Celular "*" *--> "1" Processador
+ProdutoVenda "1" --> "1" Celular
+Celular "*" <--> "1"Serie
+Serie "*" <--> "1" Linha
+Venda "1" --> "*" ProdutoVenda
+Venda --> Cliente
+Cliente "1" *--> "1" Usuario
+Funcionario "1" *--> "1" Usuario
+Funcionario "1" --> "*"Celular
+@enduml
