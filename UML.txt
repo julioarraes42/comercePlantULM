@@ -1,5 +1,5 @@
 @startuml
-class ProdutoVenda{
+class CelularVenda{
   -quantidade : Integer
 }
 
@@ -10,20 +10,16 @@ class Tela{
 
 class Camera{
   -resolucao : Float
-  -direcao : Boolean
+  -frontal : Boolean
 }
 
-enum PortasESlots{
-  CARTOES_SIM
-  CARTAO_DE_MEMORIA
+class PortaSlot{
+  -tipo : String
+  -quantidade : int
 }
 
-enum Funcionalidades{
-  SENSOR_PROXIMIDADE
-  INFRA_VERMELHO
-  SENSOR_LUZ
-  SENSOR_MOVIMENTO
-  LEITOR_DIGITAL
+Class Sensor{
+  -tipo : String
 }
 
 class Processador{
@@ -55,32 +51,33 @@ class Venda{
 }
 
 class Usuario{
-  -loguim : String
-  -Senha : String
   -cpf : String
   -nome : String
   -sexo : Boolean
 }
 
 class Cliente{
+  -loguim : String
+  -Senha : String
   -cep : String
 }
 
 class Funcionario{
+  -loguim : String
+  -Senha : String
   -codigoFuncionario : String
 }
 
-Celular "*" *--> "1" Tela
-Celular --> Funcionalidades
-Celular --> "*" PortasESlots
-Celular "*" *--> "*" Camera
-Celular "*" *--> "1" Processador
-ProdutoVenda "1" --> "1" Celular
-Celular "*" <--> "1"Serie
-Serie "*" <--> "1" Linha
-Venda "1" --> "*" ProdutoVenda
-Venda --> Cliente
-Cliente "1" *--> "1" Usuario
-Funcionario "1" *--> "1" Usuario
-Funcionario "1" --> "*"Celular
+Celular "*" o--> "1" Tela
+Celular "*" --> "*" Sensor
+Celular "*" --> "*" PortaSlot
+Celular "*" o--> "*" Camera
+Celular "*" o--> "1" Processador
+CelularVenda "1" o--> "1" Celular
+Celular "*" --> "1"Serie
+Serie "*" --> "1" Linha
+Venda "1" o--> "*" CelularVenda
+Venda "*" o-left-> "1" Cliente
+Cliente "1" o-left-> "1" Usuario
+Funcionario "1" o-up-> "1" Usuario
 @enduml
