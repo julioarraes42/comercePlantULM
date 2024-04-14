@@ -57,13 +57,13 @@ class Usuario{
 }
 
 class Cliente{
-  -loguim : String
+  -login : String
   -Senha : String
   -cep : String
 }
 
 class Funcionario{
-  -loguim : String
+  -loguin : String
   -Senha : String
   -codigoFuncionario : String
 }
