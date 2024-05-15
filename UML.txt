@@ -63,7 +63,7 @@ class Cliente{
 }
 
 class Funcionario{
-  -loguin : String
+  -login : String
   -Senha : String
   -codigoFuncionario : String
 }
